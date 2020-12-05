@@ -9,7 +9,7 @@
 #include "DS1307RTC.h"
 
 using namespace CanSatKit;
-
+//kodujesz tak szybko jak ja stoje a ty nie stoisz tylko biegasz
 OneWire oneWire(A0);
 DallasTemperature sensors(&oneWire);
 
