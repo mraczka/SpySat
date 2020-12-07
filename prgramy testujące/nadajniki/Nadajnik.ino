@@ -1,3 +1,9 @@
+/* Jest to klasyczny program wysyłający pustą date. Jego celem jest wykorzystanie do pomiarów mocy sygnału w zależności od odległości
+Jest to wersja podstawowa - można ją dowolnie zmieniać i np. ustawiać to co program ma wysyłać poprzez dodanie:
+frame.print("[to co chcemy wpisać); 
+w odpowiednim miejscu w kodzie
+*/
+
 #include <CanSatKit.h>
 
 using namespace CanSatKit;
