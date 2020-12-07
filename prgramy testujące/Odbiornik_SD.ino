@@ -1,3 +1,10 @@
+/*Jest to program napisany w celu jedynie pomiaru mocy(siły) sygnału. 
+Aby program ten zadziałał, należy uprzednio wgrać na inną płytkę posiadającą nadajnik i znajdującą się w pobliżu program nadający jakikolwiek sygnał. 
+Na monitorze portu szeregowego płytki odbierającej (z wgranym tym pogramem) będą pojawiały się tylko wskazania mocy sygnału
+Takie jest właśnie założenie i główna myśl tego pliku - móc zmierzyć zależność odległości od mocy sygnału. 
+Aby program był w pełni funkcjonalny należy wcześniej dolutować do płytek anteny
+Zwiększy to realizm odczytów i pozwoli na wykorzystanie wyników testów w późniejszych procesach związanych z rozbudową radia */
+
 #include <CanSatKit.h>
 #include <SPI.h>
 #include <SD.h>
