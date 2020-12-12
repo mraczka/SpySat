@@ -1,1 +1,1 @@
-# SpySat
+# Cansat SpySat
