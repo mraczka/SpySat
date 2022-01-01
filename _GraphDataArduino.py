@@ -79,13 +79,15 @@ while (True):
         print(serialString.decode('Ascii')) #Type: string
         
         ReceviedSerialData = serialString.decode('Ascii')
-        ReceviedRSSI = int(re.search(r'\d+', ReceviedSerialData).group())
         
-        if('-' in ReceviedSerialData):
-            ReceviedRSSI = int(str('-') + str(ReceviedRSSI))
-            print(ReceviedRSSI)
-        else:
-            print(ReceviedRSSI)
+        if("RSSI" in ReceviedSerialData):
+            ReceviedRSSI = int(re.search(r'\d+', ReceviedSerialData).group())
+            
+            if('-' in ReceviedSerialData):
+                ReceviedRSSI = int(str('-') + str(ReceviedRSSI))
+                print(ReceviedRSSI)
+            else:
+                print(ReceviedRSSI)
         # Tell the device connected over the serial port that we recevied the data!
         # The b at the beginning is used to indicate bytes!
         #serialPort.write(b"Thank you for sending data \r\n")
