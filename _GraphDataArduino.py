@@ -3,7 +3,6 @@ import statistics as st
 import numpy as np
 import random
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
 
 import serial
 import re
@@ -24,7 +23,7 @@ ax.set_xlim(-1, 40)
 ax.set_ylim(-60, 20)
 
 
-fig.canvas.manager.set_window_title('Sheesh okno')
+fig.canvas.manager.set_window_title('Sheesh window')
 
 plt.xlabel('X - Axis [sec]')
 plt.ylabel('Y - Axis [data]')
@@ -59,7 +58,7 @@ time = 1
     
 ###################################################################################################
 
-serialPort = serial.Serial(port = "COM19", baudrate=115200,
+serialPort = serial.Serial(port = "COM5", baudrate=115200,
                            bytesize=8, timeout=2, stopbits=serial.STOPBITS_ONE)
 
 serialString = ""                           # Used to hold data coming over UART
@@ -72,7 +71,7 @@ while (True):
     
     if(serialPort.in_waiting > 0):
         
-        # Read data out of the buffer until a carraige return / new line is found
+        # Read data out of the buffer until a new line is found
         serialString = serialPort.readline()
 
         # Print the contents of the serial data
@@ -85,18 +84,20 @@ while (True):
             
             if('-' in ReceviedSerialData):
                 ReceviedRSSI = int(str('-') + str(ReceviedRSSI))
-                print(ReceviedRSSI)
-            else:
-                print(ReceviedRSSI)
-        # Tell the device connected over the serial port that we recevied the data!
-        # The b at the beginning is used to indicate bytes!
-        #serialPort.write(b"Thank you for sending data \r\n")
+                #print(ReceviedRSSI)
+            #else:                          
+                #print(ReceviedRSSI)
         
-        x_data.append(time)
-        y_data.append(ReceviedRSSI)   
-        plt.plot(x_data, y_data, color='blue', label = "Data")
-        Average()
-        plt.draw()
-        time += 1
-        plt.pause(0.1)        
+        ##May be useful - serialPort.write(b"Thank you for sending data \r\n")
+
+
         
+            x_data.append(time)
+            y_data.append(ReceviedRSSI) 
+            plt.plot(x_data, y_data, color='blue', label = "Data")
+            Average()
+            plt.draw()
+            time += 1
+            plt.pause(0.1)   
+            ax.cla()
+                
